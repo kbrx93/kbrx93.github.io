@@ -1,2 +1,2 @@
 # kbrx93.github.io
-my hexo
+hexo source code
