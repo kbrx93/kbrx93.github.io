@@ -82,9 +82,9 @@ theme: next
 
 #Search
 algolia:
-  applicationID: 'F4OXP3OU5P'
-  apiKey: 'df7c6d61069088c31ebe2b23284f8251'
-  adminApiKey: '2b7009f3104164404fd75fd1f2ca9347'
+  applicationID: '3ENWSQKB1Q'
+  apiKey: 'f6813d592ca93f41afe3c6e55f58334a'
+  adminApiKey: '0c37d0e6ae8e50d321f4290d5016f7e8'
   indexName: 'hexo'
   chunkSize: 5000
 
