@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 安静de
-subtitle:
-description: 
+title: 逃亡之人
+subtitle: 
+description: 相与不难，相知不易
 author: kbrx93
-language: zh-CN
+language: zh-Hans
 timezone:
 
 # URL
@@ -78,15 +78,20 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: maupassant
+theme: next2
 
 #Search
-algolia:
-  applicationID: '3ENWSQKB1Q'
-  apiKey: 'f6813d592ca93f41afe3c6e55f58334a'
-  adminApiKey: '0c37d0e6ae8e50d321f4290d5016f7e8'
-  indexName: 'hexo'
-  chunkSize: 5000
+# algolia:
+#   applicationID: '3ENWSQKB1Q'
+#   apiKey: 'f6813d592ca93f41afe3c6e55f58334a'
+#   adminApiKey: '0c37d0e6ae8e50d321f4290d5016f7e8'
+#   indexName: 'hexo'
+#   chunkSize: 5000
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -94,3 +99,22 @@ deploy:
   type: git
   repo: git@github.com:kbrx93/kbrx93.github.io.git
   branch: master
+
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: false
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
