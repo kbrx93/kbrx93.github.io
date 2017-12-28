@@ -96,25 +96,13 @@ search:
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
+- type: git
   repo: git@github.com:kbrx93/kbrx93.github.io.git
   branch: master
+- type: baidu_url_submitter ## 这是新加的
 
-  jsonContent:
-    meta: false
-    pages: false
-    posts:
-      title: true
-      date: true
-      path: true
-      text: false
-      raw: false
-      content: false
-      slug: false
-      updated: false
-      comments: false
-      link: false
-      permalink: false
-      excerpt: false
-      categories: false
-      tags: true
+baidu_url_submit:
+  count: 1 ## 提交最新的一个链接
+  host: kbrx93.com ## 在百度站长平台中注册的域名
+  token: HgSp44O65jWC8o48 ## 请注意这是您的秘钥， 所以请不要把博客源代码发布在公众仓库里!
+  path: baidu_urls.txt ## 文本文档的地址， 新链接会保存在此文本文档里
