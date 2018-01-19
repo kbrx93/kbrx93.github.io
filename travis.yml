@@ -1,11 +1,18 @@
 language: node_js
-node_js: node
+node_js: stable
 
+# 只监听 source 分支的改动
+branches:
+  only:
+  - source
+
+# 缓存依赖，节省持续集成时间
 cache:
+  yarn: true
   directories:
     - node_modules
+    - themes
 
-install: npm install
+install:
 
-before_script:
-  - npm install -g gulp
+script:
