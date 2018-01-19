@@ -1,13 +1,15 @@
 ---
 title: {{ title }}
 date: {{ date }}
-tags: 
-categories: 
-copyright: true
-urlname: 
+permalink:
+categories:
+tags: []
+description:
+image:
 ---
-***
-
-
-
-<!--more-->
+<p class="description"></p>
+<img src="https://" alt="" style="width:100%" />
+<!-- more -->
+##
+##
+##
