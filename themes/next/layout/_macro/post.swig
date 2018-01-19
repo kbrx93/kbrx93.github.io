@@ -41,7 +41,7 @@
                   <i class="fa fa-thumb-tack"></i>
                 </span>
               {% endif %}
-              <a target="_blank" class="post-title-link post-title-link-external" target="_blank" href="{{ url_for(post.link) }}" itemprop="url">
+              <a class="post-title-link post-title-link-external" target="_blank" href="{{ url_for(post.link) }}" itemprop="url">
                 {{ post.title or post.link }}
                 <i class="fa fa-external-link"></i>
               </a>
@@ -52,7 +52,7 @@
                     <i class="fa fa-thumb-tack"></i>
                   </span>
                 {% endif %}
-                <a target="_blank" class="post-title-link" href="{{ url_for(post.path) }}" itemprop="url">{#
+                <a class="post-title-link" href="{{ url_for(post.path) }}" itemprop="url">{#
                 #}{{ post.title | default(__('post.untitled'))}}{#
               #}</a>{#
             #}{% else %}{{ post.title }}{% endif %}{#
@@ -104,7 +104,7 @@
               {% endif %}
               {% for cat in post.categories %}
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a target="_blank" href="{{ url_for(cat.path) }}" itemprop="url" rel="index">
+                  <a href="{{ url_for(cat.path) }}" itemprop="url" rel="index">
                     <span itemprop="name">{{ cat.name }}</span>
                   </a>
                 </span>
@@ -124,7 +124,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a target="_blank" href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">
+                <a href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">
                   <span class="post-comments-count ds-thread-count" data-thread-key="{{ post.path }}" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -134,7 +134,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a target="_blank" href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">
+                <a href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">
                   <span class="post-comments-count fb-comments-count" data-href="{{ post.permalink }}" itemprop="commentCount">0</span> comments
                 </a>
               </span>
@@ -144,7 +144,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a  target="_blank" href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">
+                <a href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
                         data-disqus-identifier="{{ post.path }}" itemprop="commentCount"></span>
                 </a>
@@ -156,7 +156,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a target="_blank" href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">
+                <a href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">
                   <span class="post-comments-count hc-comment-count" data-xid="{{ post.path }}" itemprop="commentsCount"></span>
                 </a>
               </span>
@@ -168,11 +168,11 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               {% if is_post() %}
-                <a target="_blank" href="{{ url_for(post.path) }}#SOHUCS" itemprop="discussionUrl">
+                <a href="{{ url_for(post.path) }}#SOHUCS" itemprop="discussionUrl">
                   <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="{{ post.path }}" itemprop="commentsCount"></span>
                 </a>
               {% else %}
-                <a target="_blank" href="{{ url_for(post.path) }}#SOHUCS" itemprop="discussionUrl">
+                <a href="{{ url_for(post.path) }}#SOHUCS" itemprop="discussionUrl">
                   <span id="url::{{ post.permalink }}" class="cy_cmt_count" data-xid="{{ post.path }}" itemprop="commentsCount" ></span>
                 </a>
               {% endif %}
@@ -182,8 +182,18 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a target="_blank" href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">
+                <a href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">
                   <span class="post-comments-count gitment-comments-count" data-xid="{{ url_for(post.path) }}" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            {% elseif theme.valine.enable and theme.valine.appid and theme.valine.appkey %}
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="{{ url_for(post.path) }}" itemprop="commentCount"></span>
                 </a>
               </span>
             {% endif %}
@@ -258,7 +268,7 @@
     {#################}
     {### POST BODY ###}
     {#################}
-    <div class="{% if is_index %}index-{% endif %}post-body{% if theme.han %} han-init-context{% endif %}{% if post.direction && post.direction.toLowerCase() === 'rtl' %} rtl{% endif %}" itemprop="articleBody">
+    <div class="post-body{% if theme.han %} han-init-context{% endif %}{% if post.direction && post.direction.toLowerCase() === 'rtl' %} rtl{% endif %}" itemprop="articleBody">
 
       {# Gallery support #}
       {% if post.photos and post.photos.length %}
@@ -278,12 +288,13 @@
           {% if post.photos.length % COLUMN_NUMBER > 0 %}</div>{% endif %}
         </div>
       {% endif %}
+
       {% if is_index %}
         {% if post.description and theme.excerpt_description %}
           {{ post.description }}
           <!--noindex-->
           <div class="post-button text-center">
-            <a target="_blank" class="btn" href="{{ url_for(post.path) }}">
+            <a class="btn" href="{{ url_for(post.path) }}">
               {{ __('post.read_more') }} &raquo;
             </a>
           </div>
@@ -292,7 +303,7 @@
           {{ post.excerpt }}
           <!--noindex-->
           <div class="post-button text-center">
-            <a target="_blank" class="btn" href="{{ url_for(post.path) }}{% if theme.scroll_to_more %}#{{ __('post.more') }}{% endif %}" rel="contents">
+            <a class="btn" href="{{ url_for(post.path) }}{% if theme.scroll_to_more %}#{{ __('post.more') }}{% endif %}" rel="contents">
               {{ __('post.read_more') }} &raquo;
             </a>
           </div>
@@ -303,14 +314,14 @@
           {% if content.length > theme.auto_excerpt.length %}...{% endif %}
           <!--noindex-->
           <div class="post-button text-center">
-            <a target="_blank" class="btn" href="{{ url_for(post.path) }}{% if theme.scroll_to_more %}#{{ __('post.more') }}{% endif %}" rel="contents">
+            <a class="btn" href="{{ url_for(post.path) }}{% if theme.scroll_to_more %}#{{ __('post.more') }}{% endif %}" rel="contents">
               {{ __('post.read_more') }} &raquo;
             </a>
           </div>
           <!--/noindex-->
         {% else %}
           {% if post.type === 'picture' %}
-            <a target="_blank" href="{{ url_for(post.path) }}">{{ post.content }}</a>
+            <a href="{{ url_for(post.path) }}">{{ post.content }}</a>
           {% else %}
             {{ post.content }}
           {% endif %}
@@ -324,7 +335,7 @@
     {#####################}
     <div>
       {% if not is_index %}
-      {% include 'passage-end-tag.swig' %}
+        {% include 'passage-end-tag.swig' %}
       {% endif %}
     </div>
 
@@ -333,12 +344,6 @@
         {% include 'wechat-subscriber.swig' %}
       </div>
     {% endif %}
-
-    <div>
-      {% if not is_index %}
-        {% include 'my-copyright.swig' %}
-      {% endif %}
-    </div>
 
     {% if (theme.alipay or theme.wechatpay or theme.bitcoin) and not is_index %}
       <div>
@@ -356,7 +361,7 @@
       {% if post.tags and post.tags.length and not is_index %}
         <div class="post-tags">
           {% for tag in post.tags %}
-            <a target="_blank" href="{{ url_for(tag.path) }}" rel="tag"><i class="fa fa-tag"></i> {{ tag.name }}</a>
+            <a href="{{ url_for(tag.path) }}" rel="tag"><i class="fa fa-tag"></i> {{ tag.name }}</a>
           {% endfor %}
         </div>
       {% endif %}
@@ -404,7 +409,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             {% if post.next %}
-              <a target="_blank" href="{{ url_for(post.next.path) }}" rel="next" title="{{ post.next.title }}">
+              <a href="{{ url_for(post.next.path) }}" rel="next" title="{{ post.next.title }}">
                 <i class="fa fa-chevron-left"></i> {{ post.next.title }}
               </a>
             {% endif %}
@@ -414,7 +419,7 @@
 
           <div class="post-nav-prev post-nav-item">
             {% if post.prev %}
-              <a target="_blank" href="{{ url_for(post.prev.path) }}" rel="prev" title="{{ post.prev.title }}">
+              <a href="{{ url_for(post.prev.path) }}" rel="prev" title="{{ post.prev.title }}">
                 {{ post.prev.title }} <i class="fa fa-chevron-right"></i>
               </a>
             {% endif %}

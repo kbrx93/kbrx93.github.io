@@ -1,0 +1,210 @@
+// Custom styles.
+/*--------read more-------------*/
+.post-button .btn:hover {
+  border-color: #222;
+  color: #222;
+  background: #fff;
+}
+.post-button {
+  margin-top: 50px;
+}
+.post-button .btn {
+  color: #555;
+  font-size: 14px;
+  background: transparent;
+  border-radius: 0;
+  line-height: 2;
+  margin: 0 4px 8px 4px;
+}
+.post-button .fa-fw {
+  width: 1.285714285714286em;
+  text-align: left;
+}
+.post-button {
+  margin-top: 20px;
+  text-align: left;
+}
+.post-button a {
+  margin: 0 8px 8px 0 !important;
+  padding: 0;
+  font-size: 14px;
+  color: #666;
+  background: none;
+  border: none;
+  border-bottom: 2px solid #666;
+  transition-property: border;
+}
+@media (max-width: 767px) {
+  .post-button a {
+    font-size: 12px;
+  }
+}
+@media (min-width: 1600px) {
+  .post-button a {
+    font-size: 16px;
+  }
+}
+.post-button a:hover {
+  border-bottom-color: #222;
+}
+.post-button {
+  margin-top: 30px;
+  text-align: right;
+}
+.post-button .btn {
+  color: #fff;
+  font-size: 15px;
+  background: #686868;
+  border-radius: 16px;
+  line-height: 2;
+  margin: 0 4px 8px 4px;
+  padding: 0 20px;
+}
+.post-button a {
+  border-bottom: 1px solid #666;
+}
+.post-button a:hover {
+  color: #7784ba;
+}
+/*-------------标签的样式---------------*/
+.post-tags a {
+	display: inline-block;
+	height: 20px
+	position: relative;
+	margin: 10px;
+	padding: 0 10px;
+	text-align: center;
+	text-decoration: none;
+	font: bold 12px/25px Arial, sans-serif;
+
+	text-shadow: 1px 1px 1px rgba(255,255,255, .22);
+
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+
+	-webkit-box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+	-moz-box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+	box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+
+	-webkit-transition: all 0.15s ease;
+	-moz-transition: all 0.15s ease;
+	-o-transition: all 0.15s ease;
+	-ms-transition: all 0.15s ease;
+	transition: all 0.15s ease;
+
+	color: #515151;
+	background: #d3d3d3; /* Old browsers */
+	background: -moz-linear-gradient(top,  #eaeaea 0%, #e6e6e6 100%); /* FF3.6+ */
+	background: -webkit-gradient(top, color-stop(0%,#e6e6e6), color-stop(100%,#e6e6e6)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #eaeaea 0%, #e6e6e6 100%); /* Chrome10+,Safari5.1+ */ /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #eaeaea 0%,#e6e6e6 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #eaeaea 0%,#e6e6e6 100%); /* IE10+ */
+	background: linear-gradient(top,  #eaeaea 0%,#e6e6e6 100%); /* W3C */
+}
+/*----------调整首页-----------*/
+.post-body hr {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+.posts-expand .post-eof {
+  display: none;
+}
+// 主页文章添加边框阴影效果
+.post {
+   margin-top: 20px;
+   margin-bottom: 20px;
+   padding: 25px;
+   -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);
+   -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
+}
+
+.post-header div.post-meta {
+    margin-bottom: 2em;
+}
+/*----------disqus按钮-----------*/
+.disbtn {
+    display: inline-block;
+    padding: 0 20px;
+    font-size: 14px;
+    color: #fff;
+    background: #222;
+    border: 2px solid #222;
+    text-decoration: none;
+    border-radius: 0;
+    transition-property: background-color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+    line-height: 2;
+}
+
+.disbtn:hover {
+  border-color: #222;
+  color: #222;
+  background: #fff;
+}
+/*--------Code---------*/
+code {
+    color: #dc0000;
+    background: #fbf7f8;
+    margin: 2px;
+}
+
+//手机显示格式调整
+@media screen and (max-width: 900px) {
+  #posts {
+      margin-left: 0px;
+      margin-right: 0px;
+  }
+  p {
+      padding-left: 1%;
+      padding-right: 0px;
+      margin-left: 1%;
+  }
+  .post.post-type-normal {
+    padding-left: 1%;
+      padding-right: 1%;
+  }
+  ul {
+    padding-left: 5%;
+  }
+  .post-button.text-center {
+    margin-top: 0px;
+  }
+  blockquote {
+    padding-left: 1%;
+      padding-right: 1%;
+  }
+  .content-wrap {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+}
+
+/*---------底色调整---------*/
+body, .sidebar-inner, .header-inner, #sidebar, .content-wrap {
+  background: #fefefb ;
+}
+
+header#header {
+  border-bottom: 1px solid rgb(238, 238, 238);
+  background: #fefefb
+}
+footer#footer {
+  border-top: 1px solid rgb(238, 238, 238);
+  background: #fefefb
+}
+
+/*--------侧边栏边框阴影效果---------*/
+ .sidebar-inner, .header-inner {
+   -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);
+   -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
+  }
+
+/*--------自定义文本居中引号效果---------*/
+.blockquote-center {
+  font-size: 125%
+}
+

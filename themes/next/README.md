@@ -15,7 +15,7 @@
 
 * :heart_decoration: Muse scheme: [XiaMo](https://notes.wanghao.work) | [OAwan](https://oawan.me) | [Hui Wang](http://hui-wang.info)
 * :six_pointed_star: Mist scheme: [Jeff](https://blog.zzbd.org) | [uchuhimo](http://uchuhimo.me) | [xirong](http://www.ixirong.com)
-* :pisces: Pisces scheme: [Vi](http://notes.iissnan.com) | [Acris](https://blog.mrx.one) | [Rainy](https://rainylog.com)
+* :pisces: Pisces scheme: [Vi](http://notes.iissnan.com) | [Acris](https://acris.me) | [Rainy](https://rainylog.com)
 * :gemini: Gemini scheme: [Ivan.Nginx](https://almostover.ru) | [Alynx](http://sh.alynx.xyz) | [Raincal](https://raincal.top)
 
 More NexT examples [here](https://github.com/iissnan/hexo-theme-next/issues/119).
@@ -152,6 +152,7 @@ With this feature, now you can put all your configurations into one place (`sour
 ## Features
 
 ### Multiple languages support, including:
+:cn: Simplified Chinese & Traditional Chinese.<br>
 :us: English<br>
 :ru: Russian<br>
 :fr: French<br>
@@ -161,7 +162,7 @@ With this feature, now you can put all your configurations into one place (`sour
 :portugal: Portuguese (Brazil)<br>
 :kr: Korean<br>
 :it: Italian<br>
-:cn: Simplified Chinese & Traditional Chinese.
+:netherlands: Dutch
 
 Default language is English.
 
@@ -179,6 +180,7 @@ language: en
 # language: pt-BR
 # language: ko
 # language: it
+# language: nl-NL
 ```
 
 Set `language` field as following in site `_config.yml` to change to Chinese.

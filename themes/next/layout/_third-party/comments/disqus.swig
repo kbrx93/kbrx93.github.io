@@ -7,6 +7,17 @@
 
     {% if page.comments %}
       <script type="text/javascript">
+        /*var disqus_config = function () {
+          this.page.url = '{{ page.permalink }}';
+          this.page.identifier = '{{ page.path }}';
+          this.page.title = '{{ page.title| addslashes }}';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://{{theme.disqus.shortname}}.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);*/
+     var disqus = {
+  load : function disqus(){
         var disqus_config = function () {
           this.page.url = '{{ page.permalink }}';
           this.page.identifier = '{{ page.path }}';
@@ -16,6 +27,9 @@
         s.src = 'https://{{theme.disqus.shortname}}.disqus.com/embed.js';
         s.setAttribute('data-timestamp', '' + +new Date());
         (d.head || d.body).appendChild(s);
+$('#load-disqus').remove(); ///加载后移除按钮
+    }
+}
       </script>
     {% endif %}
 
