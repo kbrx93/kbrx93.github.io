@@ -4,7 +4,7 @@ node_js: stable
 # 只监听 source 分支的改动
 branches:
   only:
-  - master
+  - source
 
 # 缓存依赖，节省持续集成时间
 cache:
