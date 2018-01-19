@@ -670,12 +670,6 @@ motion:
 # Fancybox
 fancybox: true
 
-# Internal version: 2.1.5
-  # See: http://fancyapps.com/fancybox/
-  # 自定义 fancybox（暂时）
-  fancybox: https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js
-  fancybox_css: https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css
-
 
 # Progress bar in the top during page loading.
 pace: false
@@ -735,8 +729,8 @@ vendors:
 
   # Internal version: 2.1.5
   # See: http://fancyapps.com/fancybox/
-  fancybox:
-  fancybox_css:
+  fancybox: https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js
+  fancybox_css: https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css
 
   # Internal version: 1.0.6
   # See: https://github.com/ftlabs/fastclick
