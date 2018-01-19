@@ -186,7 +186,7 @@ sidebar:
   b2t: false
 
   # Scroll percent label in b2t button.
-  scrollpercent: false
+  scrollpercent: true
 
   # Enable sidebar on narrow view (only for Muse | Mist).
   onmobile: false
@@ -203,7 +203,7 @@ scroll_to_more: false
 save_scroll: false
 
 # Automatically excerpt description in homepage as preamble text.
-excerpt_description: true
+excerpt_description: false
 
 # Automatically Excerpt. Not recommend.
 # Please use <!-- more --> in the post to control excerpt accurately.
@@ -234,9 +234,9 @@ post_wordcount:
   #description: ex. subscribe to my blog by scanning my public wechat account
 
 # Reward
-reward_comment: 希望对你有用
-wechatpay: /images/wechat-reward-image.png
-alipay: /images/alipay-reward-image.jpg
+# reward_comment: 希望对你有用
+# wechatpay: /images/wechat-reward-image.png
+# alipay: /images/alipay-reward-image.jpg
 #bitcoin: /images/bitcoin.png
 
 # Declare license on posts
@@ -345,7 +345,7 @@ han: false
 #swiftype_key:
 
 # Baidu Analytics ID
-#baidu_analytics:
+baidu_analytics: fa63aa29ad44c91345fff9767b339a49
 
 # Duoshuo ShortName
 #duoshuo_shortname:
@@ -461,7 +461,7 @@ baidu_site_verification: 9RdpX0cji5
 
 
 # Google Analytics
-#google_analytics:
+google_analytics: UA-112778332-1
 
 # Bing Webmaster tools verification setting
 # See: https://www.bing.com/webmaster/
