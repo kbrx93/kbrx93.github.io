@@ -98,6 +98,9 @@ search:
 deploy:
 - type: git
   repo: git@github.com:kbrx93/kbrx93.github.io.git
+- type: git 
+  repo: git@git.coding.net:kbrx93/kbrx93.coding.me.git
+
   branch: master
 # - type: baidu_url_submitter ## 这是新加的
 
