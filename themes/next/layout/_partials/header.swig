@@ -2,7 +2,7 @@
   <div class="site-meta {% if theme.custom_logo.enabled %}custom-logo{% endif %}">
     {% if theme.custom_logo.image and theme.scheme === 'Muse' %}
       <div class="site-meta-headline">
-        <a>
+        <a target="_blank">
           <img class="custom-logo-image" src="{{ theme.custom_logo.image }}"
                alt="{{ config.title }}"/>
         </a>
@@ -10,7 +10,7 @@
     {% endif %}
 
     <div class="custom-logo-site-title">
-      <a href="{{ config.root }}"  class="brand" rel="start">
+      <a target="_blank" href="{{ config.root }}"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">{{ config.title }}</span>
         <span class="logo-line-after"><i></i></span>
@@ -40,7 +40,7 @@
       {% for name, path in theme.menu %}
         {% set itemName = name.toLowerCase() %}
         <li class="menu-item menu-item-{{ itemName | replace(' ', '-') }}">
-          <a href="{{ url_for(path.split('||')[0]) | trim }}" rel="section">
+          <a  href="{{ url_for(path.split('||')[0]) | trim }}" target="_blank" rel="section">
             {% if theme.menu_icons.enable %}
               <i class="menu-item-icon fa fa-fw fa-{{ path.split('||')[1] | trim | default('question-circle') }}"></i> <br />
             {% endif %}

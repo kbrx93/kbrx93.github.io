@@ -52,7 +52,7 @@
                     <i class="fa fa-thumb-tack"></i>
                   </span>
                 {% endif %}
-                <a class="post-title-link" href="{{ url_for(post.path) }}" itemprop="url">{#
+                <a class="post-title-link" target="_blank" href="{{ url_for(post.path) }}" itemprop="url">{#
                 #}{{ post.title | default(__('post.untitled'))}}{#
               #}</a>{#
             #}{% else %}{{ post.title }}{% endif %}{#
@@ -104,7 +104,7 @@
               {% endif %}
               {% for cat in post.categories %}
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="{{ url_for(cat.path) }}" itemprop="url" rel="index">
+                  <a href="{{ url_for(cat.path) }}" target="_blank" itemprop="url" rel="index">
                     <span itemprop="name">{{ cat.name }}</span>
                   </a>
                 </span>
@@ -124,7 +124,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">
+                <a href="{{ url_for(post.path) }}#comments" target="_blank" itemprop="discussionUrl">
                   <span class="post-comments-count ds-thread-count" data-thread-key="{{ post.path }}" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -134,7 +134,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">
+                <a href="{{ url_for(post.path) }}#comments" target="_blank" itemprop="discussionUrl">
                   <span class="post-comments-count fb-comments-count" data-href="{{ post.permalink }}" itemprop="commentCount">0</span> comments
                 </a>
               </span>
@@ -144,7 +144,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">
+                <a target="_blank" href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
                         data-disqus-identifier="{{ post.path }}" itemprop="commentCount"></span>
                 </a>
@@ -156,7 +156,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">
+                <a target="_blank" href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">
                   <span class="post-comments-count hc-comment-count" data-xid="{{ post.path }}" itemprop="commentsCount"></span>
                 </a>
               </span>
@@ -168,11 +168,11 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               {% if is_post() %}
-                <a href="{{ url_for(post.path) }}#SOHUCS" itemprop="discussionUrl">
+                <a target="_blank" href="{{ url_for(post.path) }}#SOHUCS" itemprop="discussionUrl">
                   <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="{{ post.path }}" itemprop="commentsCount"></span>
                 </a>
               {% else %}
-                <a href="{{ url_for(post.path) }}#SOHUCS" itemprop="discussionUrl">
+                <a target="_blank" href="{{ url_for(post.path) }}#SOHUCS" itemprop="discussionUrl">
                   <span id="url::{{ post.permalink }}" class="cy_cmt_count" data-xid="{{ post.path }}" itemprop="commentsCount" ></span>
                 </a>
               {% endif %}
@@ -182,7 +182,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">
+                <a target="_blank" href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">
                   <span class="post-comments-count gitment-comments-count" data-xid="{{ url_for(post.path) }}" itemprop="commentsCount"></span>
                 </a>
               </span>
@@ -192,7 +192,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">
+                <a target="_blank" target="_blank" href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">
                   <span class="post-comments-count valine-comment-count" data-xid="{{ url_for(post.path) }}" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -276,7 +276,7 @@
           {% set COLUMN_NUMBER = 3 %}
           {% for photo in post.photos %}
             {% if loop.index0 % COLUMN_NUMBER === 0 %}<div class="post-gallery-row">{% endif %}
-              <a class="post-gallery-img fancybox"
+              <a target="_blank" class="post-gallery-img fancybox"
                  href="{{ url_for(photo) }}" rel="gallery_{{ post._id }}"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="{{ url_for(photo) }}" itemprop="contentUrl"/>
@@ -294,7 +294,7 @@
           {{ post.description }}
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="{{ url_for(post.path) }}">
+            <a target="_blank" target="_blank" class="btn" href="{{ url_for(post.path) }}">
               {{ __('post.read_more') }} &raquo;
             </a>
           </div>
@@ -310,7 +310,7 @@
 
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="{{ url_for(post.path) }}{% if theme.scroll_to_more %}#{{ __('post.more') }}{% endif %}" rel="contents">
+            <a target="_blank" class="btn" href="{{ url_for(post.path) }}{% if theme.scroll_to_more %}#{{ __('post.more') }}{% endif %}" rel="contents">
               {{ __('post.read_more') }} &raquo;
             </a>
           </div>
@@ -321,14 +321,14 @@
           {% if content.length > theme.auto_excerpt.length %}...{% endif %}
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="{{ url_for(post.path) }}{% if theme.scroll_to_more %}#{{ __('post.more') }}{% endif %}" rel="contents">
+            <a target="_blank" target="_blank" class="btn" href="{{ url_for(post.path) }}{% if theme.scroll_to_more %}#{{ __('post.more') }}{% endif %}" rel="contents">
               {{ __('post.read_more') }} &raquo;
             </a>
           </div>
           <!--/noindex-->
         {% else %}
           {% if post.type === 'picture' %}
-            <a href="{{ url_for(post.path) }}">{{ post.content }}</a>
+            <a target="_blank" href="{{ url_for(post.path) }}">{{ post.content }}</a>
           {% else %}
             {{ post.content }}
           {% endif %}
@@ -368,7 +368,7 @@
       {% if post.tags and post.tags.length and not is_index %}
         <div class="post-tags">
           {% for tag in post.tags %}
-            <a href="{{ url_for(tag.path) }}" rel="tag"><i class="fa fa-tag"></i> {{ tag.name }}</a>
+            <a target="_blank" href="{{ url_for(tag.path) }}" rel="tag"><i class="fa fa-tag"></i> {{ tag.name }}</a>
           {% endfor %}
         </div>
       {% endif %}
@@ -416,7 +416,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             {% if post.next %}
-              <a href="{{ url_for(post.next.path) }}" rel="next" title="{{ post.next.title }}">
+              <a target="_blank" href="{{ url_for(post.next.path) }}" rel="next" title="{{ post.next.title }}">
                 <i class="fa fa-chevron-left"></i> {{ post.next.title }}
               </a>
             {% endif %}
@@ -426,7 +426,7 @@
 
           <div class="post-nav-prev post-nav-item">
             {% if post.prev %}
-              <a href="{{ url_for(post.prev.path) }}" rel="prev" title="{{ post.prev.title }}">
+              <a target="_blank" href="{{ url_for(post.prev.path) }}" rel="prev" title="{{ post.prev.title }}">
                 {{ post.prev.title }} <i class="fa fa-chevron-right"></i>
               </a>
             {% endif %}

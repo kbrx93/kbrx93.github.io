@@ -30,7 +30,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             {% if theme.avatar %}
-              <a href="/" class="site-author-image" rel="start" style="border:none">
+              <a target="_blank" href="/" class="site-author-image" rel="start" style="border:none">
               <img class="site-author-image" itemprop="image"
                 src="{{ url_for( theme.avatar | default(theme.images + '/avatar.gif') ) }}"
                 alt="{{ theme.author }}" />
@@ -51,9 +51,9 @@
             {% if config.archive_dir != '/' and site.posts.length > 0 %}
               <div class="site-state-item site-state-posts">
               {% if theme.menu.archives %}
-                <a href="{{ url_for(theme.menu.archives).split('||')[0] | trim }}">
+                <a target="_blank" href="{{ url_for(theme.menu.archives).split('||')[0] | trim }}">
               {% else %}
-                <a href="{{ url_for(config.archive_dir) }}">
+                <a target="_blank" href="{{ url_for(config.archive_dir) }}">
               {% endif %}
                   <span class="site-state-item-count">{{ site.posts.length }}</span>
                   <span class="site-state-item-name">{{ __('state.posts') }}</span>
@@ -65,7 +65,7 @@
               {% set categoriesPageQuery = site.pages.find({type: 'categories'}, {lean: true}) %}
               {% set hasCategoriesPage = categoriesPageQuery.length > 0 %}
               <div class="site-state-item site-state-categories">
-                {% if hasCategoriesPage %}<a href="{{ url_for(categoriesPageQuery[0].path) }}">{% endif %}
+                {% if hasCategoriesPage %}<a target="_blank" href="{{ url_for(categoriesPageQuery[0].path) }}">{% endif %}
                   <span class="site-state-item-count">{{ site.categories.length }}</span>
                   <span class="site-state-item-name">{{ __('state.categories') }}</span>
                 {% if hasCategoriesPage %}</a>{% endif %}
@@ -76,7 +76,7 @@
               {% set tagsPageQuery = site.pages.find({type: 'tags'}, {lean: true}) %}
               {% set hasTagsPage = tagsPageQuery.length > 0 %}
               <div class="site-state-item site-state-tags">
-                {% if hasTagsPage %}<a href="{{ url_for(tagsPageQuery[0].path) }}">{% endif %}
+                {% if hasTagsPage %}<a target="_blank" href="{{ url_for(tagsPageQuery[0].path) }}">{% endif %}
                   <span class="site-state-item-count">{{ site.tags.length }}</span>
                   <span class="site-state-item-name">{{ __('state.tags') }}</span>
                 {% if hasTagsPage %}</a>{% endif %}
@@ -87,7 +87,7 @@
 
           {% if theme.rss %}
             <div class="feed-link motion-element">
-              <a href="{{ url_for(theme.rss) }}" rel="alternate">
+              <a target="_blank" href="{{ url_for(theme.rss) }}" rel="alternate">
                 <i class="fa fa-rss"></i>
                 RSS
               </a>
