@@ -55,7 +55,7 @@ footer:
     version: false
   # -------------------------------------------------------------
   # Any custom text can be defined here.
-  #custom_text: Hosted by <a target="_blank" href="https://pages.github.com">GitHub Pages</a>
+  custom_text: Hosted by <a class="coding-pages" target="_blank" href="https://pages.coding.me">Coding Pages</a>
 
 # ---------------------------------------------------------------
 # SEO Settings
@@ -241,9 +241,9 @@ post_wordcount:
 
 # Declare license on posts
 post_copyright:
-  enable: false
-  license: CC BY-NC-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-nc-sa/3.0/
+  enable: true
+  license: CC BY-NC-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-nc-nd/4.0/
 
 
 # ---------------------------------------------------------------
