@@ -336,7 +336,7 @@ font:
 mathjax:
   enable: true
   per_page: false
-  cdn: //static-1251774567.file.myqcloud.com/mathjax/MathJax.js
+  cdn: https://static-1251774567.file.myqcloud.com/mathjax/MathJax.js
 
 # Han Support docs: https://hanzi.pro/
 han: false
@@ -729,8 +729,8 @@ vendors:
 
   # Internal version: 2.1.5
   # See: http://fancyapps.com/fancybox/
-  fancybox: //static-1251774567.file.myqcloud.com/fancybox/jquery.fancybox.min.js
-  fancybox_css: //static-1251774567.file.myqcloud.com/fancybox/jquery.fancybox.min.css
+  fancybox: https://static-1251774567.file.myqcloud.com/fancybox/jquery.fancybox.min.js
+  fancybox_css: https://static-1251774567.file.myqcloud.com/fancybox/jquery.fancybox.min.css
 
   # Internal version: 1.0.6
   # See: https://github.com/ftlabs/fastclick
@@ -754,7 +754,7 @@ vendors:
 
   # Internal version: 4.6.2
   # See: http://fontawesome.io/
-  fontawesome: //static-1251774567.file.myqcloud.com/font-awesome/font-awesome.min.css
+  fontawesome: https://static-1251774567.file.myqcloud.com/font-awesome/css/font-awesome.min.css
 
   # Internal version: 1
   # https://www.algolia.com
