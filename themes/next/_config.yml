@@ -754,7 +754,7 @@ vendors:
 
   # Internal version: 4.6.2
   # See: http://fontawesome.io/
-  fontawesome: https://static-1251774567.file.myqcloud.com/font-awesome/css/font-awesome.min.css
+  fontawesome: 
 
   # Internal version: 1
   # https://www.algolia.com
