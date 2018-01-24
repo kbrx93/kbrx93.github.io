@@ -352,12 +352,12 @@ baidu_analytics: fa63aa29ad44c91345fff9767b339a49
 
 # Disqus
 disqus:
-  enable: true
+  enable: false
   shortname: kbrx93-com
   count: false
 
 # Hypercomments
-#hypercomments_id:
+hypercomments_id: 100380
 
 # changyan
 changyan:
