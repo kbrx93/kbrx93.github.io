@@ -334,7 +334,7 @@ font:
 
 # MathJax Support
 mathjax:
-  enable: true
+  enable: false
   per_page: true
   cdn: https://cdn.bootcss.com/mathjax/2.7.2/latest.js
 
