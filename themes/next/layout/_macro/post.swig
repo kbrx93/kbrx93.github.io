@@ -298,7 +298,7 @@
           		if (document.getElementById("show-aplayer") == null) {
           			var array = document.getElementsByClassName("aplayer");
       				for(j = 0; j < array.length; j++){
-      					array[j].style.display="none";
+      					array[j].parentNode.removeChild(array[j]);
       				}
           		}
 			}, false);         		
