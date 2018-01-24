@@ -290,6 +290,20 @@
       {% endif %}
 
       {% if is_index %}
+      		{% if post.aplayer %}
+      			<div id="show-aplayer" ></div>
+      		{% endif %}         
+          <script type="text/javascript">
+          	document.addEventListener('DOMContentLoaded', function(){
+          		if (document.getElementById("show-aplayer") == null) {
+          			var array = document.getElementsByClassName("aplayer");
+      				for(j = 0; j < array.length; j++){
+      					array[j].style.display="none";
+      				}
+          		}
+			}, false);         		
+      </script>
+    
         {% if post.description and theme.excerpt_description %}
           {{ post.description }}
           <!--noindex-->
