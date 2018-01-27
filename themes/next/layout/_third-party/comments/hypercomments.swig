@@ -16,7 +16,7 @@
 		HC_LOAD_INIT = true;
 		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
 		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
-		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/{{ theme.hypercomments_id }}/"+lang+"/widget.js";
+		hcc.src = "/js/src/widget.js";
 		var s = document.getElementsByTagName("script")[0];
 		s.parentNode.insertBefore(hcc, s.nextSibling);
 		})();
