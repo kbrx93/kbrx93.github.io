@@ -5,14 +5,12 @@ type: "about"
 comments: false
 ---
 
-
-
 {% centerquote %}
 出生南方，坎坷未经，未感天寒地冻；<br/>
 生性懒散，不喜出门，不曾路遥马亡。 
 {% endcenterquote %}
 
-广东潮汕，理工男。
+广东潮汕人，理工男一枚。
 
 在慢慢地成熟，希望快些。
 
