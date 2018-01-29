@@ -361,11 +361,20 @@
       </div>
     {% endif %}
 
+      {% if not is_index %}
+        <br/>
+        <div class="recommonded">
+          <h3>推荐阅读</h3>
+          {{ popular_posts( {maxCount: 5 , ulClass: 'popular-posts', PPMixingRate: 0.5, isImage: true} , post ) }} 
+        </div>
+      {% endif %}
+
     {% if theme.post_copyright.enable and not is_index %}
       <div>
         {% include 'post-copyright.swig' with { post: post } %}
       </div>
     {% endif %}
+
 
     <footer class="post-footer">
       {% if post.tags and post.tags.length and not is_index %}
