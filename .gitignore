@@ -7,3 +7,4 @@ public/
 node_modules/
 package-lock.json
 *.data
+hexo-related-popular-posts-ga-cached.json
