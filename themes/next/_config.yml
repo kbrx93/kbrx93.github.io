@@ -55,7 +55,7 @@ footer:
     version: false
   # -------------------------------------------------------------
   # Any custom text can be defined here.
-  custom_text: Hosted by <a class="coding-pages" target="_blank" href="https://pages.coding.me">Coding Pages</a>
+  custom_text: Hosted by <a class="coding-pages" target="_blank" href="https://pages.coding.me">Coding Pages</a><span> | </span><a href="http://www.miitbeian.gov.cn/">粤ICP备18011928号</a>
 
 # ---------------------------------------------------------------
 # SEO Settings
