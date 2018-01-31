@@ -15,7 +15,7 @@ urlname: springmvc-helloworld
 
 ## 准备
 
--   Intellij IDEA
+-   Intellij IDEA 2017.3.3
 -   Tomcat：8.5
 -   Spring：4.0 +
 -   SpringMVC：4.0+
@@ -33,6 +33,7 @@ urlname: springmvc-helloworld
 
     *   全注解（**最常用**）
     *   在配置文件中配置`bean`的方式(了解即可)
+
 5.  编写JSP并运行Tomcat进行相关测试
 6.  过程中遇到的问题
 
