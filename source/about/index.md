@@ -9,7 +9,7 @@ comments: false
 出生南方，坎坷未经，未感天寒地冻；<br/>
 生性懒散，不喜出门，不曾路遥马亡。 
 {% endcenterquote %}
-<img src="https://image-1251774567.cosgz.myqcloud.com/2018-01-27-I-love-you.jpg" alt="I-Love-you " class="mw_img_right" style="width:300px;display: block; float: right; margin: 0px 0px 8px 8px;"/><br/>
+<img src="https://image-1251774567.cosgz.myqcloud.com/blog/2018-01-31-kristina-m-m.jpg" alt="I-Love-you " class="mw_img_right" style="width:300px;display: block; float: right; margin: 0px 0px 8px 8px;"/><br/>
 广东潮汕人，理工男一枚。
 
 在慢慢地成熟，希望快些。
