@@ -29,7 +29,7 @@ urlname: springmvc-helloworld
 1.  用IDEA搭建Maven工程，并完善相关目录结构
 2.  pom.xml中引入相关依赖
 3.  编写核心类（在这里是`Controller类 `）
-4.  配置Spring配置文件`application.xml`及`web.xml`的相关配置项，分两种：
+4.  配置SpringMVC配置文件`application.xml`及`web.xml`的相关配置项，分两种：
 
     *   全注解（**最常用**）
     *   在配置文件中配置`bean`的方式(了解即可)
