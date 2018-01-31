@@ -128,3 +128,21 @@ popularPosts:
   cache:            # (Deprecated) This options is Deprecated > v0.1.3
     path: hexo-related-popular-posts-ga-cached.json  # (Deprecated) This options is Deprecated > v0.1.3
     expiresDate: 10  # (Deprecated) This options is Deprecated > v0.1.3
+
+# markdown_it_plus configuration
+markdown_it_plus:
+  highlight: true
+  html: true
+  xhtmlOut: true
+  breaks: true
+  langPrefix:
+  linkify: true
+  typographer:
+  quotes: “”‘’
+  plugins:
+    - plugin:
+        name: markdown-it-katex
+        enable: true
+    - plugin:
+        name: markdown-it-mark
+        enable: false
