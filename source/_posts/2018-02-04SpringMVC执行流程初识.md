@@ -1,5 +1,5 @@
 ---
-title: 2018-02-04SpringMVC执行流程初识
+title: SpringMVC执行流程初识
 date: 2018-02-04
 tags: [框架, 源码, SpringMVC, 执行流程]
 categories: [tech]
