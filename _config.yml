@@ -143,6 +143,3 @@ markdown_it_plus:
     - plugin:
         name: markdown-it-katex
         enable: true
-    - plugin:
-        name: markdown-it-mark
-        enable: false
