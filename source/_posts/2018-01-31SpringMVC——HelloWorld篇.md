@@ -45,13 +45,13 @@ urlname: springmvc-helloworld
 用IDEA搭建Maven工程，并完善相关目录结构
 
 1.  选择搭建Maven工程，并使用maven-webapp模板
-![](https://image-1251774567.cosgz.myqcloud.com/blog/2018-01-31-024301.png)
-2. 填写相关的groupId和ArtifactId
-![](https://image-1251774567.cosgz.myqcloud.com/blog/2018-01-31-024501.png)
-3. 最后Finish即可
-![](https://image-1251774567.cosgz.myqcloud.com/blog/2018-01-31-024712.png)
-4. 因为默认的模板的目录结构是不完整的，所以还需要手动补全，如下图
-![](https://image-1251774567.cosgz.myqcloud.com/blog/2018-01-31-025058.png)
+  ![](https://image-1251774567.cosgz.myqcloud.com/blog/2018-01-31-024301.png)
+2.  填写相关的groupId和ArtifactId
+  ![](https://image-1251774567.cosgz.myqcloud.com/blog/2018-01-31-024501.png)
+3.  最后Finish即可
+  ![](https://image-1251774567.cosgz.myqcloud.com/blog/2018-01-31-024712.png)
+4.  因为默认的模板的目录结构是不完整的，所以还需要手动补全，如下图
+  ![](https://image-1251774567.cosgz.myqcloud.com/blog/2018-01-31-025058.png)
 
 ### 引入依赖
 pom.xml中引入相关依赖
@@ -108,23 +108,23 @@ pom.xml中引入相关依赖
 ### 编写核心类
 
 1.  注解方式
-    
+
     ```java
     /**
      * @author: kbrx93
      */
     @Controller
     public class AnnotationController {
-    
+
         @RequestMapping("/annotation_hello")
         public void sayHello() {
             System.out.println("AnnotationController.sayHello");
         }
     }
     ```
-    
+
 2.  继承接口方式
-    
+
     ```java
     /**
      * SpringMVC HelloWrold
@@ -132,7 +132,7 @@ pom.xml中引入相关依赖
      * @Author: kbrx93
      */
     public class HelloWorldController implements Controller{
-    
+
         @Override
         public ModelAndView handleRequest(
                 javax.servlet.http.HttpServletRequest httpServletRequest, 
@@ -151,7 +151,7 @@ pom.xml中引入相关依赖
 
 1.  对应注解方式（`“扫”、“驱”、“静”`）
     > 注意要在文件头引入`xmlns:mvc="http://www.springframework.org/schema/mvc"` 和 `http://www.springframework.org/schema/mvc`
-    
+
     ```java
      <!-- 全注解方式配置(扫驱静) -->
 
@@ -172,9 +172,9 @@ pom.xml中引入相关依赖
     <!-- 静态资源：你把老子相好拦下来了却不打算干点什么？？？ -->
     <mvc:default-servlet-handler/>
     ```
-     
+
 2.  对应接口方式
-    
+
     ```xml
     <!-- name属性即为访问的路径 -->
     <bean name="/hello" class="com.kbrx93.controller.hello.HelloWorldController"></bean>
@@ -197,12 +197,12 @@ pom.xml中引入相关依赖
     ${user}
     </body>
     </html>
-    
+
     ```
 
 -   运行Tomcat测试结果：
     ![](https://image-1251774567.cosgz.myqcloud.com/blog/2018-01-31-055459.jpg)
-    
+
     ![](https://image-1251774567.cosgz.myqcloud.com/blog/2018-01-31-055501.jpg)
 
 ### 问题
@@ -212,46 +212,76 @@ pom.xml中引入相关依赖
 -   `${user}`EL表达式在JSP中不生效？？？
 
     主要是由于`web.xml`文件中声明xsd版本问题（*前面提到的*），一般有以下几种：
-    
+
     -   web-app_2_2.xsd
-        
+
         ```xml
         <?xml version="1.0" encoding="UTF-8"?>  
-    <!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN" "http://java.sun.com/dtd/web-app_2_2.dtd"> 
+        <!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN" "http://java.sun.com/dtd/web-app_2_2.dtd"> 
         ```
+
     -   web-app_2_3.xsd
-        
+
         ```xml
-    <?xml version="1.0" encoding="UTF-8"?>  
-<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+        <?xml version="1.0" encoding="UTF-8"?>  
+        <!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
         ```
+
     -   `web-app_2_4.xsd` 
 
         ```xml
         <?xml version="1.0" encoding="UTF-8"?>  
-<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee   http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"> 
+        <web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee   http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"> 
         ```
 
     -   web-app_2_5.xsd 
 
         ```xml
         <?xml version="1.0" encoding="UTF-8"?>  
-<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">  
+        <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">  
         ```
 
-    其中只有2.4版本的EL解析开关是默认`打开`的，其它都是关闭的，所以自然而然解决方法就有两种：
-    
-    1.  更换声明为`2.4`版本
-    2.  在每一个使用到EL表达式的JSP页面的开头`<%@ page %>`标签中加上`isELIgnored="false"`属性，即
-        
+    -   web-app_3_0.xsd 
+
+        ```xml
+        <?xml version="1.0" encoding="UTF-8"?>  
+        <web-app xmlns="http://java.sun.com/xml/ns/javaee"  
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+                  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee  
+                  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"  
+                  version="3.0">  
+                    
+        </web-app>
+        ```
+
+    -   `web-app_3_1.xsd` 
+
+        ```xml
+        <?xml version="1.0" encoding="UTF-8"?>  
+        <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"   
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+                xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee  
+                 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"  
+                version="3.1">  
+                  
+        </web-app>  
+        ```
+
+        ​
+
+    其中只有2.4和3.1版本的EL解析开关是默认`打开`的，其它都是关闭的，所以自然而然解决方法就有两种：
+
+    1.  更换声明为`2.4`或`3.1`版本
+    2.  ]()在每一个使用到EL表达式的JSP页面的开头`<%@ page %>`标签中加上`isELIgnored="false"`属性，即
+
         ```xml
         <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
-        ``` 
+        ```
 
 -   使用注解方式调用返回值为`null`的方法发生`404`？？？
 
     由于使用了注解，所以对于方法的返回值、方法名、参数等没有了限制，但是要注意，如果在参数中没有注入一个`HttpServletResponse`参数，那么就一定要返回一个模型视图对象。（除非配置了视图解析器）**可以理解为一定要有一个响应对象。**
-    
+
 -   在项目的`web.xml`文件中配置了拦截`/`请求（*即所有*）的`DispatcherServlet`，之后直接访问静态资源时`如*.html`等报`404`错误？？？
 
     这是因为在`Tomcat`的`web.xml`中也配置了一个拦截`/`的默认`Servlet`，默认的静态资源本来也会由它处理，但是由于后加载的项目的`web.xml`也有一个拦截`/`的`Servlet`，故被覆盖了，然而静态资源在SpringMVC项目中却没有进行相关的配置，故`404`。      
