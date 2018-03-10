@@ -9,7 +9,7 @@ urlname: ruijie-to-cocoamento
 
 前言：本来在Mac上用着锐捷客户端用得好好的，也不用折腾。但是前几天下载了一个`Paralles Destop`，锐捷也如约体现出它的坑爹性质——与多网卡冲突，同时也是早就受够了每次开机都要输入密码，所以综合之后决定使用`Cocoa Mento`开始了小小的折腾。
 
-![](https://image-1251774567.cosgz.myqcloud.com/blog/2018-03-09-130933.jpg)
+![](https://image-1251774567.cosgz.myqcloud.com/blog/2018-03-10-105157.jpg)
 
 <!--more-->
 
