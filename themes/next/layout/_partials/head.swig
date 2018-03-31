@@ -16,6 +16,7 @@
   <link href="{{ pace_css_uri }}" rel="stylesheet">
 {% endif %}
 
+<link href="https://cdn.bootcss.com/KaTeX/0.9.0/katex.min.css" rel="stylesheet">
 
 {% if theme.han %}
   {% set Han_uri = url_for(theme.vendors._internal + '/Han/dist/han.min.css?v=3.3') %}
