@@ -3,7 +3,7 @@ title: Java杂记（三）ArrayList自动扩容的一道面试题
 date: 2018-04-04
 tags: [Java, 杂记, ArrayList, 自动扩容, 面试题]
 categories: [tech]
-urlname: Java-ArrayList-Automatic-expansion
+urlname: Java-Notes-ArrayList-Automatic-expansion
 ---
 ***
 

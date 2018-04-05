@@ -3,7 +3,7 @@ title: Java基础（一）final & finally & finalize
 date: 2018-03-17
 tags: [Java, 基础, 区别, final, finally, finalize]
 categories: [tech]
-urlname: Java-final-finally-finalize
+urlname: Java-Basis-final-finally-finalize
 ---
 ***
 
