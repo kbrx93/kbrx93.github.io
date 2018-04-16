@@ -9,8 +9,6 @@ urlname: Java-Notes-Protected-Question
 
 前言：在查询关于 Java 数据域绑定问题的时候，意外看到一篇关于访问修饰符 `protected` 的文章，感觉受益颇多，纠正了自己以前对于 `protected` 的"误解"，特此记录一下自己的验证过程及自己的理解。
 
-![](https://image-1251774567.cosgz.myqcloud.com/blog/2018-04-08-075056.jpg)
-
 <!--more-->
 
 ## 主要内容
