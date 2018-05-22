@@ -1,5 +1,5 @@
 ---
-title: 容器源码（一）ArrayList部分源码分析
+title: Java容器源码（一）ArrayList部分源码分析
 date: 2018-05-03
 tags: [ArrayList, 容器, 源码]
 categories: [tech]
