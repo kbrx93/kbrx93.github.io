@@ -7,6 +7,9 @@ urlname: Java-SourceCode-LinkedList
 ---
 ***
 
+<p><img class="img-logo" src="https://image-1251774567.cosgz.myqcloud.com/blog/2018-05-23-aaditya-kalia-332803-unsplash%20-1-.jpg" alt=""/></p>
+
+
 前言：LinkedList 是 Java 中非常重要的集合类，本质上就是一个数据存储的数据结构。底层是用链表来实现的。这个类注意与 ArrayList 对比
 
 <!-- more -->
