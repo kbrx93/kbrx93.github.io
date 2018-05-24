@@ -9,6 +9,7 @@ urlname: Java-SourceCode-ArrayList
 
 前言：ArrayList 是 Java 中非常重要的集合类，本质上就是一个数据存储的数据结构。底层是用数组来实现的。
 
+![](https://image-1251774567.cosgz.myqcloud.com/blog/2018-05-24-nick-hillier-339049-unsplash%20-1-.jpg)
 
 <!--more-->
 
