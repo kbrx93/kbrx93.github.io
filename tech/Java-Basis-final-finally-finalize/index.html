@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+ <script src="\assets\js\APlayer.min.js"> </script>
+
+
+<link href="https://cdn.bootcss.com/KaTeX/0.9.0/katex.min.css" rel="stylesheet">
+
+<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="google-site-verification" content="hj67Wy0Aor91jhsU_t4sA6ZrWLMnTGRfvWrNV2n_z1s">
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="cje0uW2ZnC">
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java,基础,区别,final,finally,finalize,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言：对final、finally、及finalize三个Java概念进行区别。（由于网上的资料非常多，可能只是列一些关键及在查找过程中发现的相关联的知识点，并提供一些值得参考的文章）">
+<meta name="keywords" content="Java,基础,区别,final,finally,finalize">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础（一）final &amp; finally &amp; finalize">
+<meta property="og:url" content="https://hexo.kbrx93.com/tech/Java-Basis-final-finally-finalize/index.html">
+<meta property="og:site_name" content="逃亡之人">
+<meta property="og:description" content="前言：对final、finally、及finalize三个Java概念进行区别。（由于网上的资料非常多，可能只是列一些关键及在查找过程中发现的相关联的知识点，并提供一些值得参考的文章）">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://image-1251774567.cosgz.myqcloud.com/blog/2018-03-16-153954.jpg">
+<meta property="og:image" content="https://image-1251774567.cosgz.myqcloud.com/blog/2018-03-16-154113.jpg">
+<meta property="og:image" content="https://image-1251774567.cosgz.myqcloud.com/blog/2018-03-16-154145.jpg">
+<meta property="og:updated_time" content="2018-11-24T16:57:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java基础（一）final &amp; finally &amp; finalize">
+<meta name="twitter:description" content="前言：对final、finally、及finalize三个Java概念进行区别。（由于网上的资料非常多，可能只是列一些关键及在查找过程中发现的相关联的知识点，并提供一些值得参考的文章）">
+<meta name="twitter:image" content="https://image-1251774567.cosgz.myqcloud.com/blog/2018-03-16-153954.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search","hits_empty":"没有结果: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hexo.kbrx93.com/tech/Java-Basis-final-finally-finalize/">
+
+
+
+
+
+  <title>Java基础（一）final & finally & finalize | 逃亡之人</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','/js/src/google-analytics.js','ga');
+  ga('create', 'UA-112778332-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?fa63aa29ad44c91345fff9767b339a49";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a target="_blank" href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">逃亡之人</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">相与不难，相知不易</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" target="_blank" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" target="_blank" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-star-o"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" target="_blank" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" target="_blank" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" target="_blank" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hexo.kbrx93.com/tech/Java-Basis-final-finally-finalize/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kbrx93">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/kbrx93.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="逃亡之人">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Java基础（一）final & finally & finalize</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-17T00:00:00+08:00">
+                2018-03-17
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-25T00:57:31+08:00">
+                2018-11-25
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/tech/" target="_blank" itemprop="url" rel="index">
+                    <span itemprop="name">tech</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><hr>
+<p>前言：对final、finally、及finalize三个Java概念进行区别。（由于网上的资料非常多，可能只是列一些关键及在查找过程中发现的相关联的知识点，并提供一些值得参考的文章）</p>
+<a id="more"></a>
+<h2 id="final"><a class="markdownIt-Anchor" href="#final"></a> final</h2>
+<ul>
+<li>Java关键字、“不可改变”</li>
+<li>作用
+<ul>
+<li>在类上：不能被继承或重写</li>
+<li>在方法上：不能被重写</li>
+<li>在成员变量上：在使用中不能被改变</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>final变量初始化时机：</p>
+<ol>
+<li>final变量定义时</li>
+<li>构造函数</li>
+</ol>
+</blockquote>
+<h3 id="文章"><a class="markdownIt-Anchor" href="#文章"></a> 文章</h3>
+<ul>
+<li>
+<p>final -&gt; 内联 -&gt; 类层次分析 -&gt; 虚方法 -&gt; 接口变量与final -&gt; 匿名内部类与final -&gt; private 与final</p>
+</li>
+<li>
+<p><a href="http://www.importnew.com/7553.html" rel="external nofollow noopener noreferrer" target="_blank">深入理解Java中的final关键字</a></p>
+</li>
+<li>
+<p><a href="https://www.jianshu.com/p/f68d6ef2dcf0" rel="external nofollow noopener noreferrer" target="_blank">Final of Java，这一篇差不多了</a><br>
+这篇更底层，值得一看</p>
+</li>
+</ul>
+<blockquote>
+<p>上面的文章中有几点我个人觉得需要注意或补充，如下</p>
+</blockquote>
+<ol>
+<li>
+<p>文中提到在方法上用final关键字可以使编译器编译的时候转入<code>内联或内嵌</code>模式，会提高效率，这一点也在《Think in Java》一书中提及。</p>
+<p>但是，请注意是在<mark>早期</mark>的时候，在现代的Java编译器中，可以通过CHA（Class Hierarchy Analysis 类层次分析）来智能地判断一个方法是否可以进行内联，从而进行接下来的操作，并不一定需要final的&quot;提示&quot;，<mark>也就是final在现代的编译器中和提高效率没有直接联系</mark></p>
+</li>
+<li>
+<p>上面提到了内联及类层次分析的概念，先说内联，其本质就是<code>copy</code></p>
+<pre class="highlight"><code class="Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> A {
+    B();
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">void</span> B {
+    balabala
+}
+</code></pre>
+<p>上面的代码编译器在调用A的时候，发现调用了B，所以本来是要进行一系列压栈、保存现场、弹栈等一系列的操作（因为Java中的动态绑定，只有到了运行期，才知道实际调用的方法），但是它发现B是个final的[手动滑稽]，所以它知道这个家伙是个倔脾气，谁也不能改变它，所以它就直接把B的代码copy到了A中调用B的地方（代码展开，<code>静态绑定</code>），接着顺序运行代码了，这样的效率要比正常的方法调用高。</p>
+<blockquote>
+<p>关于内联内容，可以看看<a href="https://www.zhihu.com/question/66083114" rel="external nofollow noopener noreferrer" target="_blank">final修饰递归方法会提高效率吗？</a></p>
+</blockquote>
+</li>
+<li>
+<p><code>类层次分析</code>，一种对类的关系进行分析的方法（废话），前面说了，通过类层次分析可以在编译时对方法进行智能的分析，从而决定是否能进行内联，与final无关。具体过程如下（引用自<a href="http://www.mamicode.com/info-detail-2206376.html" rel="external nofollow noopener noreferrer" target="_blank">java中final的作用</a>）：</p>
+<ul>
+<li>
+<p>编译器在进行内联时, 如果是非虚方法, 那么直接进行内联</p>
+</li>
+<li>
+<p>如果遇到虚方法(使用invokevirtual进行调用), 则java通过引入&quot;类型继承关系分析&quot;(Class Hierarchy Analysis, CHA), CHA查询此方法在当前程序下是否有多个目标版本可供选择</p>
+<ul>
+<li>
+<p>如果查询结果只有一个版本, 则可以进行内联, 称为<code>守护内联</code></p>
+</li>
+<li>
+<p>如果CHA查询得到多个版本的目标方法, 则编译器会使用内联缓存来完成方法内联: 在未发生方法调用之前, 内联缓存状态为空, 当第一次调用发生后, 缓存记录下方法接收者的版本信息, 并且每次进行方法调用的时候都比较接收者版本, 如果以后进来的每次调用的方法接收者版本都一样则继续使用内联, 如果发生变化, 则说明程序使用了虚方法的多态特性, 则会取消内联, 查找虚方法进行方法的分派。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>接口变量与final</code></p>
+<pre class="highlight"><code class="java"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">A</span></span>{ 
+<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; <span class="hljs-comment">//i 默认是public static final</span>
+}   
+</code></pre>
+<p>这里可理解成接口本身就相当于一个模板，所以模板内的东西一定是可见并且不可变的</p>
+</li>
+<li>
+<p><code>在匿名类中所有变量都必须是final变量</code></p>
+<p>这句更准确的表达是匿名内部类来自外部闭包环境的自由变量必须是final的，关于这个问题，记住一个点：<code>变量同步</code>，即为了局部变量与在内部类建立的拷贝副本保持一致。</p>
+<blockquote>
+<p>具体参考：</p>
+<ul>
+<li><a href="https://www.zhihu.com/question/21395848" rel="external nofollow noopener noreferrer" target="_blank">java为什么匿名内部类的参数引用时final？</a></li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p><code>private 与final</code><br>
+两者功能上有重叠部分（不可被子类见自然不可重写），所以写在一起没有问题，但是一般不这么写</p>
+</li>
+</ol>
+<h2 id="finally"><a class="markdownIt-Anchor" href="#finally"></a> finally</h2>
+<ul>
+<li>异常处理</li>
+<li>finally其实就是执行时机及各式各样的return这两个问题</li>
+</ul>
+<h3 id="文章-2"><a class="markdownIt-Anchor" href="#文章-2"></a> 文章</h3>
+<ol>
+<li>
+<p><a href="https://www.ibm.com/developerworks/cn/java/j-lo-finally/" rel="external nofollow noopener noreferrer" target="_blank">关于 Java 中 finally 语句块的深度辨析</a></p>
+<p>这篇文章深度是有的，但是Demo举的不是很好</p>
+</li>
+<li>
+<p><a href="http://www.cnblogs.com/lanxuezaipiao/p/3440471.html" rel="external nofollow noopener noreferrer" target="_blank">Java finally语句到底是在return之前还是之后执行？</a></p>
+<p>对比上一篇，这篇文章更好懂，同时，针对值传递与引用传递，文中说得不是很清楚，在下面的评论有十分易懂的解释。截图如下：</p>
+<p><img src="https://image-1251774567.cosgz.myqcloud.com/blog/2018-03-16-153954.jpg" alt=""></p>
+<p><img src="https://image-1251774567.cosgz.myqcloud.com/blog/2018-03-16-154113.jpg" alt=""></p>
+<p><img src="https://image-1251774567.cosgz.myqcloud.com/blog/2018-03-16-154145.jpg" alt=""></p>
+<p>可以理解成，你在try中的返回之前，会有一个变量（不管是值还是引用）的<mark>备份</mark>，你在finally中的所有操作都只是操作原来的变量，当操作完成后返回try中的return时会被备份覆盖，而区别只是引用类型你在finally可以操作它指向的对象，并没有改动引用本身（还是指向原来的那个对象），所以你对它指向的对象的操作自然不会被覆盖掉。</p>
+</li>
+</ol>
+<blockquote>
+<p>基本上搞定上面两篇，finally的基本问题就搞懂了（当然还可以再深入）</p>
+</blockquote>
+<h2 id="finalize"><a class="markdownIt-Anchor" href="#finalize"></a> finalize</h2>
+<ol>
+<li>
+<p><a href="https://basebase.github.io/2016/08/27/java-finalize%E6%96%B9%E6%B3%95/" rel="external nofollow noopener noreferrer" target="_blank">java finalize方法</a></p>
+<ul>
+<li>
+<p>finalize方法<mark>不一定</mark>会执行，只能保证如果重写了finalize，则GC时一定会执行该方法（JVM没有意外退出）</p>
+</li>
+<li>
+<p>System.gc()只是加快gc调用，也并一定会执行GC</p>
+</li>
+<li>
+<p>关键是<mark>对象销毁过程</mark>要理解</p>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="http://bijian1013.iteye.com/blog/2288223" rel="external nofollow noopener noreferrer" target="_blank">java finalize方法总结、GC执行finalize的过程</a></p>
+<p>可以结合第一篇的对象销毁过程一起理解</p>
+</li>
+<li>
+<p><a href="http://developer.51cto.com/art/200607/29278_all.htm" rel="external nofollow noopener noreferrer" target="_blank">JVM的垃圾回收机制详解和调优</a></p>
+<ul>
+<li>
+<p>finalize抛出的未捕获异常只会导致该对象的finalize执行退出</p>
+</li>
+<li>
+<p>用户可以自己调用对象的finalize方法，但是这种调用是正常的方法调用，和对象的销毁过程无关</p>
+</li>
+<li>
+<p>JVM在GC的时候如果发现对象有finalize方法，一定会去执行，但如果finalize方法是空的话，它会&quot;视而不见&quot;，也就是说直接Reclaimed，不会放入F-Queue</p>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="https://my.oschina.net/u/2297250/blog/383407" rel="external nofollow noopener noreferrer" target="_blank">详解java垃圾回收机制(转)及finalize方法（转）</a></p>
+<p>这篇更多的是GC的知识，可以配合《深入理解Java虚拟机》来Enjoy</p>
+</li>
+<li>
+<p><a href="http://mazhuang.org/2015/12/15/java-object-finalize/" rel="external nofollow noopener noreferrer" target="_blank">Java 对象释放与 finalize 方法</a></p>
+<ul>
+<li>
+<p>发生 GC 时一个对象的内存是否释放取决于是否存在该对象的引用，如果该对象包含对象成员，那对象成员也遵循本条</p>
+</li>
+<li>
+<p>对象里包含的对象成员按声明顺序进行释放</p>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+    <div>
+      
+        <div>
+
+<div style="text-align:center;color: #ccc;font-size:14px;">-------------THE <i class="fa fa-superpowers"></i> END-------------</div>
+
+</div>
+
+      
+    </div>
+
+    
+
+    
+
+      
+        <br>
+        <div class="recommonded">
+          <h3>推荐阅读</h3>
+          <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-img"><img src="https://image-1251774567.cosgz.myqcloud.com/blog/2018-03-22-132407.jpg"></div><div class="popular-posts-title"><h3><a href="/tech/Java-Basis-JMM-learning/" title="Java基础（二）Java内存模型" rel="bookmark">Java基础（二）Java内存模型</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-img"><img src="https://image-1251774567.cosgz.myqcloud.com/blog/2018-04-04-steve-johnson-548313-unsplash_gaitubao_com_1985x1323%20-1-.jpg"></div><div class="popular-posts-title"><h3><a href="/tech/Java-Basis-GC/" title="Java基础（三）GC" rel="bookmark">Java基础（三）GC</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-img"><img src="https://image-1251774567.cosgz.myqcloud.com/blog/2018-05-24-erwan-hesry-166245-unsplash%20-1-.jpg"></div><div class="popular-posts-title"><h3><a href="/tech/Java-Notes-autobox-topic/" title="Java杂记（二）自动装箱的一个题" rel="bookmark">Java杂记（二）自动装箱的一个题</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-img"><img src="https://image-1251774567.cosgz.myqcloud.com/blog/2018-01-30-Java-coffee.jpg"></div><div class="popular-posts-title"><h3><a href="/tech/Java_File_Path/" title="Java中文件读取路径学习记录" rel="bookmark">Java中文件读取路径学习记录</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-img"><img src="https://image-1251774567.cosgz.myqcloud.com/blog/2018-02-04-Spring.jpg"></div><div class="popular-posts-title"><h3><a href="/tech/SpringMVC-execution/" title="SpringMVC执行流程初识" rel="bookmark">SpringMVC执行流程初识</a></h3></div></li></ul> 
+        </div>
+      
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    kbrx93
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a target="_blank" href="https://hexo.kbrx93.com/tech/Java-Basis-final-finally-finalize/" title="Java基础（一）final & finally & finalize">https://hexo.kbrx93.com/tech/Java-Basis-final-finally-finalize/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="external nofollow noopener noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a target="_blank" href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+          
+            <a target="_blank" href="/tags/基础/" rel="tag"><i class="fa fa-tag"></i> 基础</a>
+          
+            <a target="_blank" href="/tags/区别/" rel="tag"><i class="fa fa-tag"></i> 区别</a>
+          
+            <a target="_blank" href="/tags/final/" rel="tag"><i class="fa fa-tag"></i> final</a>
+          
+            <a target="_blank" href="/tags/finally/" rel="tag"><i class="fa fa-tag"></i> finally</a>
+          
+            <a target="_blank" href="/tags/finalize/" rel="tag"><i class="fa fa-tag"></i> finalize</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a target="_blank" href="/other/ruijie-to-cocoamento/" rel="next" title="Mac上由锐捷转CoCoaMento的过程记录">
+                <i class="fa fa-chevron-left"></i> Mac上由锐捷转CoCoaMento的过程记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a target="_blank" href="/tech/Java-Basis-JMM-learning/" rel="prev" title="Java基础（二）Java内存模型">
+                Java基础（二）Java内存模型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div id="gitalk-container"></div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <a target="_blank" href="/" class="site-author-image" rel="start" style="border:none">
+              <img class="site-author-image" itemprop="image" src="/images/kbrx93.jpg" alt="kbrx93">
+              </a>
+            
+              <p class="site-author-name" itemprop="name">kbrx93</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a target="_blank" href="/archives/">
+              
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a target="_blank" href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a target="_blank" href="/tags/index.html">
+                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/kbrx93" target="_blank" title="GitHub" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:kbrx93@gmail.com" target="_blank" title="E-Mail" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-envelope-o"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#final"><span class="nav-number">1.</span> <span class="nav-text"> final</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文章"><span class="nav-number">1.1.</span> <span class="nav-text"> 文章</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#finally"><span class="nav-number">2.</span> <span class="nav-text"> finally</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文章-2"><span class="nav-number">2.1.</span> <span class="nav-text"> 文章</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#finalize"><span class="nav-number">3.</span> <span class="nav-text"> finalize</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-gg"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">kbrx93</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <div class="footer-custom">Hosted by <a class="coding-pages" target="_blank" href="https://pages.coding.me" rel="external nofollow noopener noreferrer">Coding Pages</a><span> | </span><a href="http://www.miitbeian.gov.cn/" rel="external nofollow noopener noreferrer" target="_blank">粤ICP备18011928号</a><span> | </span><a href="https://www.upyun.com/" target="_blank" rel="external nofollow noopener noreferrer"><img src="/img/upyun_logo8.png" width="40px" style="display:inline-block;"></a></div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '5cdbcf107d23d6f617bf',
+          clientSecret: 'bc97a74617188ce5145d6644726088913047dd14',
+          repo: 'kbrx93.github.io',
+          owner: 'kbrx93',
+          admin: ['kbrx93'],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+ <!--  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+ -->
+  
+  
+
+  
+
+  
+
+  
+
+  <script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script type="text/javascript">
+  $(function() {
+    hljs.initHighlighting();
+    $('pre code').each(function() {
+      var lines = $(this).text().split('\n').length - 1;
+      var $numbering = $('<ul/>').addClass('pre-numbering');
+      $(this)
+        .addClass('has-numbering')
+        .parent()
+        .append($numbering);
+      for (i = 1; i <= lines; i++) {
+        $numbering.append($('<li/>'));
+      }
+    });
+  });
+
+</script>
+</body>
+</html>
